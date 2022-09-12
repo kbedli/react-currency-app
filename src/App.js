@@ -20,7 +20,7 @@ function App() {
   async function getData() {
     try {
       const res = await fetch(
-        `http://api.nbp.pl/api/exchangerates/rates/A/${currency}/`
+        `https://api.nbp.pl/api/exchangerates/rates/A/${currency}/`
       );
       const finalRes = await res.json();
 
@@ -86,4 +86,3 @@ function App() {
 }
 
 export default App;
-
