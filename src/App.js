@@ -9,12 +9,10 @@ function App() {
   const [finalSentence, setFinalSentence] = useState("");
   const [loading, setLoading] = useState(true);
   const [catchError, setCatchError] = useState(false);
-  const [finalOutcome, setFinalOutcome] = useState(false);
-
-  let rate;
+  const [rate, setRate] = useState("");
 
   const calculate = () => {
-    setFinalOutcome((amount * rate).toFixed(2));
+    const finalOutcome = (amount * rate).toFixed(2);
     setFinalSentence(`${amount} ${currency} to ${finalOutcome} PLN`);
   };
 
@@ -25,7 +23,7 @@ function App() {
       );
       const finalRes = await res.json();
 
-      rate = finalRes.rates[0].mid;
+      setRate(finalRes.rates[0].mid);
 
       setLoading(false);
       setCatchError(false);
@@ -37,7 +35,7 @@ function App() {
 
   useEffect(() => {
     getData();
-  }, [calculate]);
+  }, [currency]);
 
   const getAmount = (e) => {
     setAmount(e.target.value);
