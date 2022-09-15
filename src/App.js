@@ -9,11 +9,12 @@ function App() {
   const [finalSentence, setFinalSentence] = useState("");
   const [loading, setLoading] = useState(true);
   const [catchError, setCatchError] = useState(false);
+  const [finalOutcome, setFinalOutcome] = useState(false);
 
   let rate;
 
   const calculate = () => {
-    const finalOutcome = (amount * rate).toFixed(2);
+    setFinalOutcome((amount * rate).toFixed(2));
     setFinalSentence(`${amount} ${currency} to ${finalOutcome} PLN`);
   };
 
