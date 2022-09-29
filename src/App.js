@@ -52,20 +52,20 @@ function App() {
         <p>Przelicz kwotę na PLN!</p>
       </div>
 
-      <div class="bottom">
-        <label for="amount">Wprowadź kwotę, którą chcesz przeliczyć</label>
+      <div className="bottom">
+        <label htmlFor="amount">Wprowadź kwotę, którą chcesz przeliczyć</label>
         <input
           type="number"
           className="amount-one"
-          value={amount}
+          min="0"
+          step="1"
+          value={amount && Math.max(0, amount)}
           onChange={getAmount}
         />
-        <label for="currency">Wybierz walutę</label>
+        <label htmlFor="currency">Wybierz walutę</label>
 
         <select defaultValue={currency} onChange={changeCurrency} id="currency">
-          <option selected value="USD">
-            USD
-          </option>
+          <option value="USD">USD</option>
           <option value="EUR">EUR</option>
           <option value="CHF">CHF</option>
         </select>
